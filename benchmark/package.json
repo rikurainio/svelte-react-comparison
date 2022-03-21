@@ -1,0 +1,16 @@
+{
+  "name": "benchmark",
+  "version": "1.0.0",
+  "description": "benchmark for svelte and react dom manipulation speeds",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chromedriver": "^99.0.0",
+    "geckodriver": "^3.0.1",
+    "selenium-webdriver": "^4.1.1"
+  }
+}
