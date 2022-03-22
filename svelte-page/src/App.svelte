@@ -84,7 +84,7 @@
 	function generateSentence(){
 		let si= Math.floor(Math.random() * size.length)
 		let ci = Math.floor(Math.random() * color.length)
-		let ii = Math.floor(Math.random() * color.length)
+		let ii = Math.floor(Math.random() * item.length)
 		let randomSentence = size[si] + " " + color[ci] + " " + item[ii]
 		return randomSentence
 	}
@@ -93,16 +93,16 @@
 <main>
 	<div class='buttonsContainer'>
 		<div class='buttonRow'>
-			<button id="button-1" on:click={() => {createElements(generateAmount)}}>
+			<button id="button-insert-10" on:click={() => {createElements(generateAmount)}}>
 				insert {generateAmount} p tags
 			</button>
-			<button id="button-2" on:click={() => {createElements(generateAmount*10)}}>
+			<button id="button-insert-100" on:click={() => {createElements(generateAmount*10)}}>
 				insert {generateAmount*10} p tags
 			</button>
-			<button id="button-2" on:click={() => {createElements(generateAmount*100)}}>
+			<button id="button-insert-1000" on:click={() => {createElements(generateAmount*100)}}>
 				insert {generateAmount*100} p tags
 			</button>
-			<button id="button-2" on:click={() => {createElements(generateAmount*1000)}}>
+			<button id="button-insert-10000" on:click={() => {createElements(generateAmount*1000)}}>
 				insert {generateAmount*1000} p tags
 			</button>
 		</div>
@@ -118,31 +118,30 @@
 				delete last p tag
 			</button>
 	
-			<button id="button-remove-start" on:click={() => {addElementX('start')}}>
+			<button id="button-add-start" on:click={() => {addElementX('start')}}>
 				add to beginning
 			</button>
-			<button id="button-remove-idx-6000" on:click={() => {addElementX('middle')}}>
+			<button id="button-add-middle" on:click={() => {addElementX('middle')}}>
 				add to middle
 			</button>
-			<button id="button-remove-end" on:click={() => {addElementX('end')}}>
+			<button id="button-add-end" on:click={() => {addElementX('end')}}>
 				add to end
 			</button>
 		</div>
 		
 		<div class='buttonRow'>
-			<button id="button-3" on:click={() => {editRandom()}}>
+			<button id="button-edit-random" on:click={() => {editRandom()}}>
 				edit one random p tag
 			</button>
-			<button id="button-4" on:click={() => {removeRandom()}}>
-				delete one random p tag
-			</button>
-			<button id="button-6" on:click={() => {swapTwoRandom()}}>
+			<button id="button-swap-two-random" on:click={() => {swapTwoRandom()}}>
 				swap two random p tags
 			</button>
-			<button id="button-5" on:click={() => {clearElement("paragraphs")}}>
+			<button id="button-delete-random" on:click={() => {removeRandom()}}>
+				delete one random p tag
+			</button>
+			<button id="button-delete-all" on:click={() => {clearElement("paragraphs")}}>
 				delete all p tags
 			</button>
-		
 		</div>
 	</div>
 
