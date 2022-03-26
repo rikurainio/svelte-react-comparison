@@ -4,7 +4,7 @@ const fs = require('fs')
 var os = require("os");
 
 const ITERATIONS = 1000
-const WARMUP_ROUNDS = 5
+const WARMUP_ROUNDS = 30
 const SERVICE = new chrome.ServiceBuilder('../chromedriver.exe')
 let loggerTest= fs.createWriteStream('./test.txt')
 let testData = []
@@ -17,14 +17,14 @@ async function main(){
 async function helloSelenium(driver) {
     console.log("helloselenium :)")
     await driver.get('http://localhost:8080/');
-    driver.manage().setTimeouts({implicit: 0.5 })
+    driver.manage().setTimeouts({implicit: 1 })
 
-    testInsert(driver, 'button-insert-10')
-    //testEdit(driver, 'button-3')
+    //testInsert(driver, 'button-insert-10000')
+    testEdit(driver, 'button-delete-all')
 }
 
-
 async function testInsert(driver, buttonId) {
+  try{
     for(let i=0; i < ITERATIONS + WARMUP_ROUNDS; i++){
       const element = await driver.wait(until.elementLocated(By.id(buttonId)))
       await element.click()
@@ -33,12 +33,16 @@ async function testInsert(driver, buttonId) {
       const msr = await measurement.getText()
 
       testData.push(msr)
-      console.log("added [", msr, "] to  test data array")
+      console.log("added [", msr, "]")
       driver.navigate().refresh().then(
         driver.manage().setTimeouts({implicit: 0.5 })
       )
     }
     writeTestDataToFile()
+  }
+  catch(err){
+    console.log("err: ", err)
+  }
 }
 
 
@@ -46,7 +50,7 @@ async function testEdit(driver, buttonId){
     console.log("start of testEdit")
     for(let i=0; i < ITERATIONS + WARMUP_ROUNDS; i++){
       try{
-        const element = await driver.wait(until.elementLocated(By.id('button-2')))
+        const element = await driver.wait(until.elementLocated(By.id('button-insert-1000')))
         await element.click()
   
         const element2 = await driver.wait(until. elementLocated(By.id(buttonId)))
@@ -54,6 +58,9 @@ async function testEdit(driver, buttonId){
   
         const measurement = await driver.wait(until.elementLocated(By.id('measurement')))
         const msr = await measurement.getText()
+
+        testData.push(msr)
+        console.log("added [", msr, "]")
         driver.navigate().refresh().then(
           driver.manage().setTimeouts({implicit: 0.5 })
         )

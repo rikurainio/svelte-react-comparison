@@ -1,18 +1,18 @@
-"button-insert-10"
-"button-insert-100"
-"button-insert-1000"
-"button-insert-10000"
+"button-insert-10"      done
+"button-insert-100"     done
+"button-insert-1000"    done
+"button-insert-10000"   done
 
-"button-remove-start"
-"button-remove-middle"
-"button-remove-end"
+"button-remove-start"   done
+"button-remove-middle"  done
+"button-remove-end"     done
 
-"button-add-start"
-"button-add-middle"
-"button-add-end"
+"button-add-start"      done
+"button-add-middle"     done
+"button-add-end"        done
 
-"button-edit-random"
+"button-edit-random"    done
 "button-swap-two-random"
 
-"button-delete-random"
+"button-delete-random"  done
 "button-delete-all"
